@@ -1,0 +1,123 @@
+p.btn.gray button[type="submit"]{
+		background-color:#b8b8b8;
+	}
+p.btn.gray button[type="submit"].submit{
+	width:355px;
+	font-size:18px;
+	padding:18px 0;
+}
+@media screen and (max-width: 320px) {
+	p.btn.gray button[type="submit"].submit{
+		width:300px;
+	}
+}
+span.error p{
+	color: #ff5c5c !important;
+    float: left;
+    font-size: 12px;
+}
+#accept-messege{
+	text-align: center;
+}
+#accept-messege span.error p,#accept-messege label.error{
+	float: none;
+}
+
+::-webkit-input-placeholder {
+   color: #000;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #000;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #000;  
+}
+
+:-ms-input-placeholder {  
+   color: #000;  
+}
+input[type="tel"].keywords{  
+	width: 220px;  
+	height: 47px;  
+	background: url(../img/search.png) no-repeat 10px 13px #fff;  
+	border: none;
+	box-shadow:none;
+	padding-left:40px;
+}
+/*検索ワード*/
+p.search_word{
+	word-wrap:break-word;
+    word-break: break-all;
+}
+
+table.form, table.form.confirm td {
+    word-wrap:break-word;
+    word-break: break-all;
+}
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: none;
+    width: 260px;
+    height: 47px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    background: #fff url("../images/arrowdown.gif") no-repeat 95% 50%;
+}
+
+.select-style select {
+    padding-left:40px;
+    width: 100%;
+    border: none;
+    height: 47px;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: url(../img/search.png);
+    background-repeat: no-repeat;
+    background-position: 10px 13px;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    font-family: "Avenir Next","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","游ゴシック","Yu Gothic","メイリオ",Meiryo,Osaka,sans-serif;
+    font-size: 16px;
+}
+.select-style select option{
+	font-size: 13px;
+	line-height: 0.1;
+}
+.select-style select:focus {
+    outline: none;
+}
+@media screen and (max-width: 320px) {
+	.select-style select.keywords{  
+		width: 190px;  
+	}
+}
+.tab-point{
+    display: inline-flex;
+}
+.tab-point input[type="tel"]{
+    width: 120px;
+}
+.tab-point .select-style{
+    margin-left: 15px;
+    width: 80px;   
+}
+.tab-point .select-style select{
+    background-image: none;
+    padding-left: 20px;
+}
+table.tile.add_h3 th:nth-child(4) {
+    width: 45px !important;
+}
+.tile.add_h3 tr{
+    font-size: 12px;
+}
+p.pagenation_counter span.active{
+    color: #666;
+    font-size: 13px;
+    font-weight: normal;
+}
