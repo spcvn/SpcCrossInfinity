@@ -56,7 +56,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 		<!--▼▼▼article▼▼▼-->
 		<article>
 			<section>
-			<form id = "editForm1" action="<?php echo base_url('company/support'); ?>" method="post">
+			<form id = "editForm1" action="<?php echo base_url('company/support'); ?>" method="post" enctype="multipart/form-data"">
 				<input type="hidden" name="active_flag" id="active_flag" value="<?php echo $active_flg; ?>">
 				<input type="hidden" name="form_has_data" value='0' id="form_has_data"> 
 				<h2 class="kigyou">応援条件</h2>
@@ -445,6 +445,21 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						<div id="mail"></div>
 						</td>
 				 	</tr>
+					<!--Update by Son -  Begin - -->
+					 <tr>
+						 <th class="h3" colspan="2"><h3>Add File</h3></th>
+					 </tr>
+					 <tr>
+						 <th>Select File To Upload:<span class="must">※</span></th>
+						 <td>
+							 <input class="custom-file-input" type="file" id="companyfile" name="companyfile[]" multiple="multiple"  />
+							 <span style="color:red"><?php echo form_error('file'); ?></span>
+							 <div id="file"></div>
+							 <div id="selectedFiles"></div>
+						 </td>
+
+					 </tr>
+					 <!--Update by Son - End - -->
 					 <tr>
 						<th class="h3" colspan="2"><h3>パスワード</h3></th>
 					 </tr>
@@ -524,5 +539,48 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 	// 		 return console.log($(this).val());
 	// 	});
 	// }
+
+
+
+	var selDiv = "";
+
+	document.addEventListener("DOMContentLoaded", init, false);
+
+	function init() {
+		document.querySelector('#companyfile').addEventListener('change', handleFileSelect, false);
+		selDiv = document.querySelector("#selectedFiles");
+	}
+	function handleFileSelect(e) {
+		if(!e.target.files || !window.FileReader) return;
+		$('#selectedFiles').show();
+		selDiv.innerHTML = "";
+//		selDiv.style.display = '';
+		var files = e.target.files;
+		var filesArr = Array.prototype.slice.call(files);
+		filesArr.forEach(function(f) {
+//			console.log(f);
+//			console.log(f.type);
+//			console.log((/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name));
+
+			if(!(/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name)) {
+				return;
+			}
+			var reader = new FileReader();
+			reader.onload = function (e) {
+				var html = "<img title=\"" + f.name + "\"  src=\"" + e.target.result + "\">";
+				selDiv.innerHTML += html;
+			}
+			reader.readAsDataURL(f);
+
+		});
+
+
+	}
+//	$('#companyfile').live("click", function() {
+//		$('#selectedFiles').show();
+//	});
+//	document.getElementById(id).style.display = '';
+
+
 
 </script>
