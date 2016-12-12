@@ -20,7 +20,7 @@ $config['salt_password'] = 'T@kEy@NI2015!@#^';
 | environments.
 |
 */
-$config['base_url'] = 'http://stg.cross-infinity.com';
+$config['base_url'] = 'http://cross.local/';
 /*
 |--------------------------------------------------------------------------
 | Index File
