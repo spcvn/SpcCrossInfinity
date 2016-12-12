@@ -43,7 +43,6 @@ class Account extends MY_Controller {
 			}
 			else{
 				$id_input = $this->input->post('id');
-
 				$id = $this->get_login_id($id_input);
 				$password = $this->input->post('password');
 				$type = $this->get_login_type($id_input);
