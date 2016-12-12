@@ -2039,7 +2039,8 @@ class Company extends MY_Controller {
 	public function check_password_confirm() {
 		if(mb_strlen($this->input->post('password_confirm')) > 0) {
 			$cid = $this->session->userdata('id');
-			$password_input = md5(mb_convert_encoding($this->input->post('password_confirm').$this->salt,"SJIS", "ASCII"));
+//			$password_input = md5(mb_convert_encoding($this->input->post('password_confirm').$this->salt,"SJIS", "ASCII"));
+			$password_input = md5($this->input->post('password_confirm').$this->salt);
 			$password_reward = $this->Company_model->get_password_reward_by_id($cid);
 			if($password_input != $password_reward) {
 				return FALSE;

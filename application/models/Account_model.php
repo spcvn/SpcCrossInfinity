@@ -41,7 +41,7 @@ class Account_model extends CI_Model {
 
     // Compare password MD5
     private function verify_password_md5($password, $md5_password) {
-        $password = mb_convert_encoding($password.$this->salt,"SJIS", "ASCII");
+//        $password = mb_convert_encoding($password.$this->salt,"SJIS", "ASCII");
         if (md5($password) == $md5_password){
             return true;
         }else{
