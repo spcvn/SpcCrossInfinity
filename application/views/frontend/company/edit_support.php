@@ -452,10 +452,29 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 					 <tr>
 						 <th>Select File To Upload:<span class="must">※</span></th>
 						 <td>
-							 <input class="custom-file-input" type="file" id="companyfile" name="companyfile[]" multiple="multiple"  />
+                             <div style="display: inline-block;">
+                                 <input class="companyFile" id="companyFile1" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
+                             <div>
+                                 <input class="companyFile" id="companyFile2" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
+                             <div>
+                                 <input class="companyFile" id="companyFile3" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
+                             <div>
+                                 <input class="companyFile" id="companyFile4" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
+                             <div>
+                                 <input class="companyFile" id="companyFile5" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
 							 <span style="color:red"><?php echo form_error('file'); ?></span>
 							 <div id="file"></div>
-							 <div id="selectedFiles"></div>
+
 						 </td>
 
 					 </tr>
@@ -539,44 +558,64 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 	// 		 return console.log($(this).val());
 	// 	});
 	// }
-
-
-
-	var selDiv = "";
-
-	document.addEventListener("DOMContentLoaded", init, false);
-
-	function init() {
-		document.querySelector('#companyfile').addEventListener('change', handleFileSelect, false);
-		selDiv = document.querySelector("#selectedFiles");
-	}
-	function handleFileSelect(e) {
-		if(!e.target.files || !window.FileReader) return;
-		$('#selectedFiles').show();
-		selDiv.innerHTML = "";
-//		selDiv.style.display = '';
-		var files = e.target.files;
-		var filesArr = Array.prototype.slice.call(files);
-		filesArr.forEach(function(f) {
+//	var selDiv = "";
+//	document.addEventListener("DOMContentLoaded", init, false);
+//	function init() {
+//		document.querySelector('.companyFile').addEventListener('change', handleFileSelect, false);
+//		selDiv = document.querySelector("#selectedFiles");
+//	}
+//	function handleFileSelect(e) {
+//		if(!e.target.files || !window.FileReader) return;
+////		$('#selectedFiles').show();
+//        selDiv.style.display = 'block';
+////        document.querySelector('.companyFile').style.display = 'none';
+//		selDiv.innerHTML = "";
+////		selDiv.style.display = '';
+//		var files = e.target.files;
+//		var filesArr = Array.prototype.slice.call(files);
+//		filesArr.forEach(function(f) {
 //			console.log(f);
-//			console.log(f.type);
-//			console.log((/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name));
+////			console.log(f.type);
+////			console.log((/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name));
+//
+//			if(!(/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name)) {
+//				return;
+//			}
+//			var reader = new FileReader();
+//			reader.onload = function (e) {
+//			    console.log(e.target.result);
+////				var html = "<img title=\"" + f.name + "\"  src=\"" + e.target.result + "\">";
+////				selDiv.innerHTML += html;
+//			}
+//			reader.readAsDataURL(f);
+//
+//		});
+//
+//
+//	}
 
-			if(!(/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name)) {
-				return;
-			}
-			var reader = new FileReader();
-			reader.onload = function (e) {
-				var html = "<img title=\"" + f.name + "\"  src=\"" + e.target.result + "\">";
-				selDiv.innerHTML += html;
-			}
-			reader.readAsDataURL(f);
-
-		});
-
-
-	}
-//	$('#companyfile').live("click", function() {
+    $(document).ready(function(e) {
+        $("input[name='companyfile[]']").on('change',function(){
+            var file = $(this).val();
+            var exts = ['doc','docx','png','jpg','jpeg','txt'];
+            var image_holder = $(this).next();
+            // first check if file field has any value
+            if ( file ) {
+                // split file name at dot
+                var get_ext = file.split('.');
+                // reverse name to check extension
+                get_ext = get_ext.reverse();
+                // check file type is valid as given in 'exts' array
+                var extn = get_ext[0].toLowerCase();
+                if ( $.inArray ( extn , exts ) < 0 ){
+                    alert( 'Invalid file!' );
+                    $(this).val('');
+                    return false
+                }
+            }
+        });
+    });
+    //	$('#companyfile').live("click", function() {
 //		$('#selectedFiles').show();
 //	});
 //	document.getElementById(id).style.display = '';

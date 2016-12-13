@@ -10,16 +10,60 @@ html, body {
     background: #b3d4fc;
     text-shadow: none;
 }
-
+.companyFile {
+    margin-top: 10px;
+}
 #selectedFiles {
-	border: 4px dotted #cccccc;
 	display: none;
-	float: right;
+	float: left;
 	margin:0 auto;
 }
 .custom-file-input::-webkit-file-upload-button {
 	visibility: hidden;
 }
+
+/*input[type="file"] {*/
+    /*border: 1px solid #333;*/
+    /*box-sizing: border-box;*/
+    /*display: inline-block;*/
+    /*font-size: 14px;*/
+    /*margin: 0;*/
+    /*padding: 8px;*/
+    /*position: relative;*/
+    /*background-color: #fff;*/
+    /*overflow: hidden;*/
+    /*width: 40%;*/
+    /*-webkit-appearance: none;*/
+    /*-webkit-box-sizing: border-box;*/
+    /*z-index: 1;*/
+	/*float: left;*/
+/*}*/
+/*input[type="file"]:after { !* Mask the no file chosen label *!*/
+    /*background-color: #fff;*/
+    /*content: '';*/
+    /*display: block;*/
+    /*height: 100%;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*left: 0;*/
+    /*width: 100%;*/
+    /*z-index: 10;*/
+/*}*/
+
+/*input[type="file"]::-webkit-file-upload-button { !* Style the button *!*/
+    /*background: #fff;*/
+    /*color: #555;*/
+    /*font: inherit;*/
+    /*padding: 0;*/
+    /*position: relative;*/
+    /*border: none;*/
+    /*text-align: left;*/
+    /*position: relative;*/
+    /*z-index: 100;*/
+    /*-webkit-appearance: none;*/
+/*}*/
+
+
 .custom-file-input {
 	width: 26px ;
 	content: '';
@@ -64,8 +108,8 @@ html, body {
 }
 
 #selectedFiles img {
-	max-width: 100px;
-	max-height: 100px;
+	max-width: 41px;
+	max-height: 48px;
 	float: left;
 	margin-top: 10px;
 	margin-left: 10px;
