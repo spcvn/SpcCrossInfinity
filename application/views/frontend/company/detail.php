@@ -156,6 +156,20 @@
 					</td>
 				 </tr>
 				 <tr>
+					 <th class="h3" colspan="2"><h3>List files</h3></th>
+				 </tr>
+				 <tr>
+					 <td colspan="2" class="txt">
+						 <?php
+						 	foreach ($data_file as $file){ ?>
+								<p>
+								<a target="_blank" href="<?php echo base_url().$file['file']; ?>"><?php echo $file['title']?></a>
+						 		</p>
+						<?php } ?>
+
+					 </td>
+				 </tr>
+				 <tr>
 					<th class="h3" colspan="2"><h3>パスワード</h3></th>
 				 </tr>
 				 <tr>
@@ -191,7 +205,7 @@
 				 </tr>
 			 </tbody>
 			 </table>
-			 
+
 			<h2 class="txt_only">応援条件登録</h2>
 			
 			 <table class="form confirm break-character">

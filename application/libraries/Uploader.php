@@ -49,8 +49,41 @@ class Uploader
                 }
             }
         }
-}
+    }
+    function setDir($dir = false) {
+        $this->config['upload_path'] = $this->config['upload_path'] . $dir . '/' ;
+        if (is_dir($this->config['upload_path'])) {
+            return true;
+        }
+        return false;
+    }
+    function get_all_file($album = ''){
+        $arrFile = [];
+        if ($this->setDir($album)) {
+            $handle = @opendir($this->config['upload_path']);
+            if ($handle) {
+                while (false !== ($file = readdir($handle))) {
 
+                    if ($file != "." && $file != "..") {
+                        $fullFile =  $this->config['upload_path'] . $file;
+                        if (is_file($fullFile)) {
+                            $fileinfo = pathinfo($fullFile);
+                            $t['file'] = $fullFile;
+                            $t['modified'] = filemtime($fullFile);
+                            list($f, $e) = explode('.', $file);
+                            $t['title'] = str_replace('_', ' ', ucfirst($f));
+                            array_push($arrFile, $t);
+                    }
+                    }
+                }
+                closedir($handle);
+                return ($arrFile);
+            }
+        } else {
+//            log_message('error', 'Listfiles Class -> Not a valid directory resource: ');
+            return (false);
+        }
+    }
     function remove_dir($dir, $DeleteMe) {
         if(!$dh = @opendir($dir)) return;
         while (false !== ($obj = readdir($dh))) {

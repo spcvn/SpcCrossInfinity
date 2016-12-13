@@ -119,6 +119,18 @@
 					 	<td>担当者連絡先</td>
 						<td><?php echo $detail_support->rep_tel; ?></td>
 					 </tr>
+					 <tr>
+						 <td>List File</td>
+						 <td>
+							 <?php
+							 foreach ($data_file as $file){ ?>
+								 <p>
+									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>"><?php echo $file['title']?></a>
+								 </p>
+							 <?php } ?>
+
+						 </td>
+					 </tr>
 				 </tbody>
 				 </table>
 			</section>

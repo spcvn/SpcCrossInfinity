@@ -13,6 +13,7 @@ class User extends MY_Controller
 		$this->load->model('Company_model');
 		$this->load->model('Prefecture_model');
 		$this->load->model('Support_model');
+        $this->load->library("app/uploader");
 		$this->salt = $this->config->item('salt_password');
 	}
 	/*
@@ -431,7 +432,8 @@ class User extends MY_Controller
 
 		$company_reward_id = $this->uri->segment(4);
 		$data['detail_support'] = $this->Support_model->get_detail_support($company_reward_id);
-
+        $dataFile = $this->uploader->get_all_file($data['detail_support']->cid);
+        $data['data_file'] = $dataFile;
 		$url = base_url().'user/service/?'.$_SERVER['QUERY_STRING'];
 		if($this->input->get('category') != ""){
 			$url = base_url().'user/search?'.$_SERVER['QUERY_STRING'];

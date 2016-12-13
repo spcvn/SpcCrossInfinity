@@ -565,12 +565,14 @@ class Company extends MY_Controller {
 
 		$this->is_company_login();
 		$this->layout->setLayout('frontend/layout/layout');
-
+        $dataFile = $this->uploader->get_all_file($this->cid);
 		$cid = $this->session->userdata('id');
 		$data_detail['styles'] = array('company.css');
 		$company_info =  $this->Company_model->get_company_information($cid);
 		$company_info->uid_name = $this->Company_model->get_uid_name_by_uid($company_info->introduce_uid);
 		$data_detail['company_info'] = $company_info;
+//        print_r($dataFile);exit;
+		$data_detail['data_file'] = $dataFile;
 		$this->layout->view('frontend/company/detail', $data_detail);
 	}
 
