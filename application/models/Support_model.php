@@ -181,6 +181,9 @@ class Support_model extends CI_Model
 	* Get detail support company
 	**/
 	public function get_detail_support($company_reward_id){
+        /**
+         * Updated By Son Nguyen
+         **/
 		$this->db->select('t_company.cid, t_company.name as company,address,post_code,m_category.category_name as category,
 							reward_from_data,reward_to_data,reward_from_time,reward_to_time,
 							applied_lowest_price,reward_content,outside_url,public_relations,
