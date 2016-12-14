@@ -162,9 +162,9 @@
 					 <td colspan="2" class="txt">
 						 <?php
 						 	foreach ($data_file as $file){ ?>
-								<p>
-								<a target="_blank" href="<?php echo base_url().$file['file']; ?>"><?php echo $file['title']?></a>
-						 		</p>
+                                <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+                                    <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
+                                </a>
 						<?php } ?>
 
 					 </td>

@@ -13,7 +13,7 @@ class Uploader
         $this->config =  array(
             'upload_path'     => "./application/upload/",
             'upload_url'      => base_url()."upload/",
-            'allowed_types'   => "jpg|png|jpeg|pdf|doc|docx|txt",
+            'allowed_types'   => "jpg|png|jpeg|pdf|txt",
             'overwrite'       => FALSE,
             'max_size'        => "0",
             'encrypt_name'        => FALSE,
@@ -49,6 +49,8 @@ class Uploader
                 }
             }
         }
+        $this->resetConfig();
+        return true;
     }
     function setDir($dir = false) {
         $this->config['upload_path'] = $this->config['upload_path'] . $dir . '/' ;
@@ -71,31 +73,53 @@ class Uploader
                             $t['file'] = $fullFile;
                             $t['modified'] = filemtime($fullFile);
                             list($f, $e) = explode('.', $file);
+                            if( in_array(strtolower($e),['png','jpg','jpeg','gif']) ) {
+                                $t['logo'] = 'image.png';
+                            }elseif ( strtolower($e) === 'pdf'){
+                                $t['logo'] = 'pdf.png';
+                            }else{
+                                $t['logo'] = 'text.png';
+                            }
                             $t['title'] = str_replace('_', ' ', ucfirst($f));
                             array_push($arrFile, $t);
                     }
                     }
                 }
                 closedir($handle);
+                $this->resetConfig();
                 return ($arrFile);
             }
-        } else {
-//            log_message('error', 'Listfiles Class -> Not a valid directory resource: ');
-            return (false);
         }
+        $this->resetConfig();
+        return (false);
     }
-    function remove_dir($dir, $DeleteMe) {
-        if(!$dh = @opendir($dir)) return;
-        while (false !== ($obj = readdir($dh))) {
-            if($obj=='.' || $obj=='..') continue;
-            if (!@unlink($dir.'/'.$obj)) $this->remove_dir($dir.'/'.$obj, true);
-        }
+    function refactor_dir($album, $currentFiles = null) {
+//        print_r($this->setDir($album));exit;
+        if ($this->setDir($album)) {
 
-        closedir($dh);
-        if ($DeleteMe){
-            @rmdir($dir);
-        }
 
+            $handle = @opendir($this->config['upload_path']);
+
+            if ($handle) {
+                while (false !== ($file = readdir($handle))) {
+                    if ($file != "." && $file != "..") {
+                        $fullFile =  $this->config['upload_path'] . $file;
+                        if(is_null($currentFiles)){
+                            rmdir($this->config['upload_path']);
+                        }
+                        if (is_file($fullFile) && !in_array($fullFile,$currentFiles)){
+                            unlink($fullFile);
+                        }
+                    }
+                }
+                closedir($handle);
+            }
+        }
+        $this->resetConfig();
+        return true;
+    }
+    private function resetConfig(){
+        $this->config['upload_path'] = "./application/upload/"  ;
     }
 
 }

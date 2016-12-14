@@ -123,10 +123,11 @@
 						 <td>List File</td>
 						 <td>
 							 <?php
-							 foreach ($data_file as $file){ ?>
-								 <p>
-									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>"><?php echo $file['title']?></a>
-								 </p>
+							 foreach ($data_file as $file){  ?>
+									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
+									 </a>
+
 							 <?php } ?>
 
 						 </td>

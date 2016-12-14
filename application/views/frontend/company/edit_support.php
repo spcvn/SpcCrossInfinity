@@ -451,27 +451,30 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 					 </tr>
 					 <tr>
 						 <th>Select File To Upload:<span class="must">※</span></th>
-						 <td>
+						 <td class="file_data">
+							 <?php
+							 $maxupload = 5;
+							 foreach ($data_file as $file){  ?>
+								 <div style="display: inline-block;">
+									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
+									 </a>
+									 <input type="hidden" name="files[]" value="<?php echo $file['file']; ?>">
+									 <input class="delbtn" type="button" value="Delete" />
+								 </div>
+							 <?php }
+							 	if(($maxupload - count($data_file)) > 0){
+							 		for ($i = 1; $i <= ($maxupload - count($data_file)); $i++) {
+
+							 ?>
+
                              <div style="display: inline-block;">
-                                 <input class="companyFile" id="companyFile1" type="file" name="companyfile[]"  />
+                                 <input class="companyFile" type="file" name="companyfile[]"  />
                                  <div id="selectedFiles"></div>
                              </div>
-                             <div>
-                                 <input class="companyFile" id="companyFile2" type="file" name="companyfile[]"  />
-                                 <div id="selectedFiles"></div>
-                             </div>
-                             <div>
-                                 <input class="companyFile" id="companyFile3" type="file" name="companyfile[]"  />
-                                 <div id="selectedFiles"></div>
-                             </div>
-                             <div>
-                                 <input class="companyFile" id="companyFile4" type="file" name="companyfile[]"  />
-                                 <div id="selectedFiles"></div>
-                             </div>
-                             <div>
-                                 <input class="companyFile" id="companyFile5" type="file" name="companyfile[]"  />
-                                 <div id="selectedFiles"></div>
-                             </div>
+							 <?php }
+							 	}
+							?>
 							 <span style="color:red"><?php echo form_error('file'); ?></span>
 							 <div id="file"></div>
 
@@ -595,9 +598,17 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 //	}
 
     $(document).ready(function(e) {
+		$( ".delbtn" ).on( "click", function() {
+			$(this).parent().remove();
+			var row_str = "<div style='display: inline-block;'><input class='companyFile' type='file' name='companyfile[]'  /><div id='selectedFiles'></div></div>";
+			$("td.file_data").append(row_str);
+
+		});
+
+
         $("input[name='companyfile[]']").on('change',function(){
             var file = $(this).val();
-            var exts = ['doc','docx','png','jpg','jpeg','txt'];
+            var exts = ['doc','png','jpg','jpeg','txt'];
             var image_holder = $(this).next();
             // first check if file field has any value
             if ( file ) {

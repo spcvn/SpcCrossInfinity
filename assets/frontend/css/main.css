@@ -106,8 +106,16 @@ html, body {
 .custom-file-input:active::before {
 	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
-
-#selectedFiles img {
+.delbtn{
+	color: #fff;
+	background-color: #ea8d5b;
+	width: 90px;
+	height:35px;
+	margin-top: 18px;
+	margin-left: 10px;
+	font-size: large;
+}
+.companyFilesLogo{
 	max-width: 41px;
 	max-height: 48px;
 	float: left;

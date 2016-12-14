@@ -1075,7 +1075,8 @@ class Company extends MY_Controller {
 				$data['scripts'] =  array('update_support_company.js');
 				$company_info = $this->Company_model->get_company_information($this->cid);
 				$data['company_info'] = $company_info;
-				
+                $dataFile = $this->uploader->get_all_file($this->cid);
+                $data['data_file'] = $dataFile;
 				$this->layout->setLayout('frontend/layout/layout');
 				
 				if($this->Support_model->count_support($this->cid) == 1)
@@ -1179,6 +1180,11 @@ class Company extends MY_Controller {
                             //add files
 							/* IF HAVE DATA EVENT ADD SUPPORT */
 							if($total_data > $current){
+                                if($this->input->post('files')){
+                                    $this->uploader->refactor_dir($this->cid,$this->input->post('files'));
+                                }else{
+                                    $this->uploader->refactor_dir($this->cid);
+                                }
                                 $this->uploader->do_upload('companyfile',$this->cid);
 								$data['has_error'] = "Errors";
 								if($flag == 0){
