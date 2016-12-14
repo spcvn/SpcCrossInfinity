@@ -120,7 +120,7 @@
 						<td><?php echo $detail_support->rep_tel; ?></td>
 					 </tr>
 					 <tr>
-						 <td>List File</td>
+						 <td>Files</td>
 						 <td>
 							 <?php
 							 if($data_file){
