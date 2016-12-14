@@ -468,7 +468,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 							 <?php }
 							 }
 							 	if($maxupload > 0){
-							 		for ($i = 1; $i <= ($maxupload - count($data_file)); $i++) {
+							 		for ($i = 1; $i <= $maxupload; $i++) {
 
 							 ?>
 
