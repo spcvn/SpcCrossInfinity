@@ -91,7 +91,7 @@ class Uploader
             }
         }
         $this->resetConfig();
-        return (false);
+        return false;
     }
     function refactor_dir($album, $currentFiles = null) {
 //        print_r($this->setDir($album));exit;

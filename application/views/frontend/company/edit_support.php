@@ -454,7 +454,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						 <td class="file_data">
 							 <?php
 
-							 if(isset($data_file) && count($data_file)>0){
+							 if($data_file){
 								 $maxupload = 5 - count($data_file);
 								 foreach ($data_file as $file){
 							   ?>

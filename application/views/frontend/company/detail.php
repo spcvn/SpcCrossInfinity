@@ -161,7 +161,7 @@
 				 <tr>
 					 <td colspan="2" class="txt">
 						 <?php
-						 if(isset($data_file) && count($data_file)>0){
+						 if($data_file){
 						 	foreach ($data_file as $file){ ?>
                                 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
                                     <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
