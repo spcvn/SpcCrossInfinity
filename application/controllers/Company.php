@@ -15,7 +15,9 @@ class Company extends MY_Controller {
 		$this->load->model('Purchase_model');
 		$this->load->model('Cross_infinty_model');
 		$this->load->helper(array('company_helper') );
+        /** Updated by Son Nguyen */
         $this->load->library("app/uploader");
+        /** End of Son Nguyen */
 		$this->salt = $this->config->item('salt_password');
 		if(!empty($this->session->userdata('id'))) $this->cid = $this->session->userdata('id');
 	}
@@ -562,18 +564,19 @@ class Company extends MY_Controller {
 	 * Display detail company and support infomation screen	
 	 */
 	public function show_detail() {
-
 		$this->is_company_login();
 		$this->layout->setLayout('frontend/layout/layout');
-        $dataFile = $this->uploader->get_all_file($this->cid);
 		$cid = $this->session->userdata('id');
 		$data_detail['styles'] = array('company.css');
 		$company_info =  $this->Company_model->get_company_information($cid);
 		$company_info->uid_name = $this->Company_model->get_uid_name_by_uid($company_info->introduce_uid);
-		$data_detail['company_info'] = $company_info;
-//        print_r($dataFile);exit;
+        $data_detail['company_info'] = $company_info;
+        /** Updated by Son Nguyen */
+        $dataFile = $this->uploader->get_all_file($this->cid);
 		$data_detail['data_file'] = $dataFile;
-		$this->layout->view('frontend/company/detail', $data_detail);
+        /** End of Son Nguyen */
+
+        $this->layout->view('frontend/company/detail', $data_detail);
 	}
 
 	/*
@@ -1075,8 +1078,10 @@ class Company extends MY_Controller {
 				$data['scripts'] =  array('update_support_company.js');
 				$company_info = $this->Company_model->get_company_information($this->cid);
 				$data['company_info'] = $company_info;
+                /** Updated by Son Nguyen */
                 $dataFile = $this->uploader->get_all_file($this->cid);
                 $data['data_file'] = $dataFile;
+                /** End of Son Nguyen */
 				$this->layout->setLayout('frontend/layout/layout');
 				
 				if($this->Support_model->count_support($this->cid) == 1)
@@ -1180,12 +1185,14 @@ class Company extends MY_Controller {
                             //add files
 							/* IF HAVE DATA EVENT ADD SUPPORT */
 							if($total_data > $current){
+                                /** Updated by Son Nguyen */
                                 if($this->input->post('files')){
                                     $this->uploader->refactor_dir($this->cid,$this->input->post('files'));
                                 }else{
                                     $this->uploader->refactor_dir($this->cid);
                                 }
                                 $this->uploader->do_upload('companyfile',$this->cid);
+                                /** End of Son Nguyen */
 								$data['has_error'] = "Errors";
 								if($flag == 0){
 									//INSERT DATA SUPPORT SECOND

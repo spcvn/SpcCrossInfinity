@@ -1,6 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed'); 
 /**
-* 
+*@category   Uploader
+*@author     Son Nguyen <son.nguyen@spc-vn.com>
 */
 class Uploader
 {
@@ -94,12 +95,8 @@ class Uploader
         return false;
     }
     function refactor_dir($album, $currentFiles = null) {
-//        print_r($this->setDir($album));exit;
         if ($this->setDir($album)) {
-
-
             $handle = @opendir($this->config['upload_path']);
-
             if ($handle) {
                 while (false !== ($file = readdir($handle))) {
                     if ($file != "." && $file != "..") {

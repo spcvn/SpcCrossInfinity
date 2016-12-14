@@ -155,8 +155,9 @@
 						<?=$company_info->bank_holder; ?>
 					</td>
 				 </tr>
+				 <!-- Updated by Son Nguyen */-->
 				 <tr>
-					 <th class="h3" colspan="2"><h3>Files</h3></th>
+					 <th class="h3" colspan="2"><h3>ファイル</h3></th>
 				 </tr>
 				 <tr>
 					 <td colspan="2" class="txt">
@@ -170,6 +171,7 @@
 
 					 </td>
 				 </tr>
+				 <!-- End of Son Nguyen */-->
 				 <tr>
 					<th class="h3" colspan="2"><h3>パスワード</h3></th>
 				 </tr>

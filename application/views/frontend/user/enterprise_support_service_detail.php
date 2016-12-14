@@ -119,8 +119,9 @@
 					 	<td>担当者連絡先</td>
 						<td><?php echo $detail_support->rep_tel; ?></td>
 					 </tr>
+					 <!-- Updated by Son Nguyen */-->
 					 <tr>
-						 <td>Files</td>
+						 <td>ファイル</td>
 						 <td>
 							 <?php
 							 if($data_file){
@@ -128,11 +129,10 @@
 									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
 										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
 									 </a>
-
 							 <?php }} ?>
-
 						 </td>
 					 </tr>
+					 <!-- End of Son Nguyen */-->
 				 </tbody>
 				 </table>
 			</section>

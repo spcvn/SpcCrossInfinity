@@ -445,12 +445,12 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						<div id="mail"></div>
 						</td>
 				 	</tr>
-					<!--Update by Son -  Begin - -->
+					 <!-- Updated by Son Nguyen */-->
 					 <tr>
-						 <th class="h3" colspan="2"><h3>Add File</h3></th>
+						 <th class="h3" colspan="2"><h3>ファイル</h3></th>
 					 </tr>
 					 <tr>
-						 <th>Select File To Upload:<span class="must">※</span></th>
+						 <th>ファイル選択:</th>
 						 <td class="file_data">
 							 <?php
 							 $maxupload = 5;
@@ -473,7 +473,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 							 ?>
 
                              <div style="display: inline-block;">
-                                 <input class="companyFile" type="file" name="companyfile[]"  />
+                                 <input placeholder="Choose File11" class="companyFile" type="file" name="companyfile[]"  />
                                  <div id="selectedFiles"></div>
                              </div>
 							 <?php }
@@ -485,7 +485,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						 </td>
 
 					 </tr>
-					 <!--Update by Son - End - -->
+					 <!-- End of Son Nguyen */-->
 					 <tr>
 						<th class="h3" colspan="2"><h3>パスワード</h3></th>
 					 </tr>
@@ -566,6 +566,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 	// 	});
 	// }
 
+	/** Updated by Son Nguyen */
     $(document).ready(function(e) {
 		$( ".delbtn" ).on( "click", function() {
 			$(this).parent().remove();
@@ -595,11 +596,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
             }
         });
     });
-    //	$('#companyfile').live("click", function() {
-//		$('#selectedFiles').show();
-//	});
-//	document.getElementById(id).style.display = '';
-
+	/** End Son Nguyen */
 
 
 </script>
