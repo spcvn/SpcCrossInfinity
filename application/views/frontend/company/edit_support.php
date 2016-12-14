@@ -453,9 +453,9 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						 <th>Select File To Upload:<span class="must">※</span></th>
 						 <td class="file_data">
 							 <?php
-
+							 $maxupload = 5;
 							 if($data_file){
-								 $maxupload = 5 - count($data_file);
+								 $maxupload = $maxupload - count($data_file);
 								 foreach ($data_file as $file){
 							   ?>
 								 <div style="display: inline-block;">
