@@ -56,7 +56,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 		<!--▼▼▼article▼▼▼-->
 		<article>
 			<section>
-			<form id = "editForm1" action="<?php echo base_url('company/support'); ?>" method="post">
+			<form id = "editForm1" action="<?php echo base_url('company/support'); ?>" method="post" enctype="multipart/form-data"">
 				<input type="hidden" name="active_flag" id="active_flag" value="<?php echo $active_flg; ?>">
 				<input type="hidden" name="form_has_data" value='0' id="form_has_data"> 
 				<h2 class="kigyou">応援条件</h2>
@@ -445,6 +445,47 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						<div id="mail"></div>
 						</td>
 				 	</tr>
+					 <!-- Updated by Son Nguyen */-->
+					 <tr>
+						 <th class="h3" colspan="2"><h3>ファイル</h3></th>
+					 </tr>
+					 <tr>
+						 <th>ファイル選択:</th>
+						 <td class="file_data">
+							 <?php
+							 $maxupload = 5;
+							 if($data_file){
+								 $maxupload = $maxupload - count($data_file);
+								 foreach ($data_file as $file){
+							   ?>
+								 <div style="display: inline-block;">
+									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
+									 </a>
+									 <input type="hidden" name="files[]" value="<?php echo $file['file']; ?>">
+									 <input class="delbtn" type="button" value="Delete" />
+								 </div>
+							 <?php }
+							 }
+							 	if($maxupload > 0){
+							 		for ($i = 1; $i <= $maxupload; $i++) {
+
+							 ?>
+
+                             <div style="display: inline-block;">
+                                 <input placeholder="Choose File11" class="companyFile" type="file" name="companyfile[]"  />
+                                 <div id="selectedFiles"></div>
+                             </div>
+							 <?php }
+							 	}
+							?>
+							 <span style="color:red"><?php echo form_error('file'); ?></span>
+							 <div id="file"></div>
+
+						 </td>
+
+					 </tr>
+					 <!-- End of Son Nguyen */-->
 					 <tr>
 						<th class="h3" colspan="2"><h3>パスワード</h3></th>
 					 </tr>
@@ -524,5 +565,38 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 	// 		 return console.log($(this).val());
 	// 	});
 	// }
+
+	/** Updated by Son Nguyen */
+    $(document).ready(function(e) {
+		$( ".delbtn" ).on( "click", function() {
+			$(this).parent().remove();
+			var row_str = "<div style='display: inline-block;'><input class='companyFile' type='file' name='companyfile[]'  /><div id='selectedFiles'></div></div>";
+			$("td.file_data").append(row_str);
+
+		});
+
+
+        $("input[name='companyfile[]']").on('change',function(){
+            var file = $(this).val();
+            var exts = ['pdf','png','jpg','jpeg','txt'];
+            var image_holder = $(this).next();
+            // first check if file field has any value
+            if ( file ) {
+                // split file name at dot
+                var get_ext = file.split('.');
+                // reverse name to check extension
+                get_ext = get_ext.reverse();
+                // check file type is valid as given in 'exts' array
+                var extn = get_ext[0].toLowerCase();
+                if ( $.inArray ( extn , exts ) < 0 ){
+                    alert( 'Invalid file!' );
+                    $(this).val('');
+                    return false
+                }
+            }
+        });
+    });
+	/** End Son Nguyen */
+
 
 </script>

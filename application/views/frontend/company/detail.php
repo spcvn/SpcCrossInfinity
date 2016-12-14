@@ -155,6 +155,23 @@
 						<?=$company_info->bank_holder; ?>
 					</td>
 				 </tr>
+				 <!-- Updated by Son Nguyen */-->
+				 <tr>
+					 <th class="h3" colspan="2"><h3>ファイル</h3></th>
+				 </tr>
+				 <tr>
+					 <td colspan="2" class="txt">
+						 <?php
+						 if($data_file){
+						 	foreach ($data_file as $file){ ?>
+                                <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+                                    <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
+                                </a>
+						<?php }} ?>
+
+					 </td>
+				 </tr>
+				 <!-- End of Son Nguyen */-->
 				 <tr>
 					<th class="h3" colspan="2"><h3>パスワード</h3></th>
 				 </tr>
@@ -191,7 +208,7 @@
 				 </tr>
 			 </tbody>
 			 </table>
-			 
+
 			<h2 class="txt_only">応援条件登録</h2>
 			
 			 <table class="form confirm break-character">
