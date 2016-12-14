@@ -453,8 +453,11 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 						 <th>Select File To Upload:<span class="must">※</span></th>
 						 <td class="file_data">
 							 <?php
-							 $maxupload = 5;
-							 foreach ($data_file as $file){  ?>
+
+							 if(isset($data_file) && count($data_file)>0){
+								 $maxupload = 5 - count($data_file);
+								 foreach ($data_file as $file){
+							   ?>
 								 <div style="display: inline-block;">
 									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
 										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
@@ -463,7 +466,8 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 									 <input class="delbtn" type="button" value="Delete" />
 								 </div>
 							 <?php }
-							 	if(($maxupload - count($data_file)) > 0){
+							 }
+							 	if($maxupload > 0){
 							 		for ($i = 1; $i <= ($maxupload - count($data_file)); $i++) {
 
 							 ?>
@@ -561,41 +565,6 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 	// 		 return console.log($(this).val());
 	// 	});
 	// }
-//	var selDiv = "";
-//	document.addEventListener("DOMContentLoaded", init, false);
-//	function init() {
-//		document.querySelector('.companyFile').addEventListener('change', handleFileSelect, false);
-//		selDiv = document.querySelector("#selectedFiles");
-//	}
-//	function handleFileSelect(e) {
-//		if(!e.target.files || !window.FileReader) return;
-////		$('#selectedFiles').show();
-//        selDiv.style.display = 'block';
-////        document.querySelector('.companyFile').style.display = 'none';
-//		selDiv.innerHTML = "";
-////		selDiv.style.display = '';
-//		var files = e.target.files;
-//		var filesArr = Array.prototype.slice.call(files);
-//		filesArr.forEach(function(f) {
-//			console.log(f);
-////			console.log(f.type);
-////			console.log((/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name));
-//
-//			if(!(/\.(gif|jpg|jpeg|pdf|png|docx)$/i).test(f.name)) {
-//				return;
-//			}
-//			var reader = new FileReader();
-//			reader.onload = function (e) {
-//			    console.log(e.target.result);
-////				var html = "<img title=\"" + f.name + "\"  src=\"" + e.target.result + "\">";
-////				selDiv.innerHTML += html;
-//			}
-//			reader.readAsDataURL(f);
-//
-//		});
-//
-//
-//	}
 
     $(document).ready(function(e) {
 		$( ".delbtn" ).on( "click", function() {

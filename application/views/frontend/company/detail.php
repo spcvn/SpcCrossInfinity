@@ -156,16 +156,17 @@
 					</td>
 				 </tr>
 				 <tr>
-					 <th class="h3" colspan="2"><h3>List files</h3></th>
+					 <th class="h3" colspan="2"><h3>Files</h3></th>
 				 </tr>
 				 <tr>
 					 <td colspan="2" class="txt">
 						 <?php
+						 if(isset($data_file) && count($data_file)>0){
 						 	foreach ($data_file as $file){ ?>
                                 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
                                     <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
                                 </a>
-						<?php } ?>
+						<?php }} ?>
 
 					 </td>
 				 </tr>

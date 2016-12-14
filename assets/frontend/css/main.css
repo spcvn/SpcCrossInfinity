@@ -21,49 +21,6 @@ html, body {
 .custom-file-input::-webkit-file-upload-button {
 	visibility: hidden;
 }
-
-/*input[type="file"] {*/
-    /*border: 1px solid #333;*/
-    /*box-sizing: border-box;*/
-    /*display: inline-block;*/
-    /*font-size: 14px;*/
-    /*margin: 0;*/
-    /*padding: 8px;*/
-    /*position: relative;*/
-    /*background-color: #fff;*/
-    /*overflow: hidden;*/
-    /*width: 40%;*/
-    /*-webkit-appearance: none;*/
-    /*-webkit-box-sizing: border-box;*/
-    /*z-index: 1;*/
-	/*float: left;*/
-/*}*/
-/*input[type="file"]:after { !* Mask the no file chosen label *!*/
-    /*background-color: #fff;*/
-    /*content: '';*/
-    /*display: block;*/
-    /*height: 100%;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*width: 100%;*/
-    /*z-index: 10;*/
-/*}*/
-
-/*input[type="file"]::-webkit-file-upload-button { !* Style the button *!*/
-    /*background: #fff;*/
-    /*color: #555;*/
-    /*font: inherit;*/
-    /*padding: 0;*/
-    /*position: relative;*/
-    /*border: none;*/
-    /*text-align: left;*/
-    /*position: relative;*/
-    /*z-index: 100;*/
-    /*-webkit-appearance: none;*/
-/*}*/
-
-
 .custom-file-input {
 	width: 26px ;
 	content: '';
@@ -82,29 +39,6 @@ html, body {
 	text-shadow: 1px 1px #fff;
 	font-weight: 700;
 	font-size: 10pt;
-}
-/*.custom-file-input::before {*/
-	/*content: '';*/
-	/*display: inline-block;*/
-	/*background: -webkit-linear-gradient(top, #f9f9f9, #e3e3e3);*/
-	/*background: url(../images/text.png) no-repeat top left;*/
-	/*height: 96px;*/
-	/*width: 83px;*/
-	/*border-radius: 3px;*/
-	/*padding: 5px 8px;*/
-	/*outline: none;*/
-	/*white-space: nowrap;*/
-	/*-webkit-user-select: none;*/
-	/*cursor: pointer;*/
-	/*text-shadow: 1px 1px #fff;*/
-	/*font-weight: 700;*/
-	/*font-size: 10pt;*/
-/*}*/
-.custom-file-input:hover::before {
-	border-color: black;
-}
-.custom-file-input:active::before {
-	background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 .delbtn{
 	color: #fff;
