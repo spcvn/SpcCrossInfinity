@@ -12,6 +12,7 @@ class Uploader
     {
         $this->ci =& get_instance();
         $this->config =  array(
+            'root_path'     => "./application/upload/",
             'upload_path'     => "./application/upload/",
             'upload_url'      => base_url()."upload/",
             'allowed_types'   => "jpg|png|jpeg|pdf|txt",
@@ -24,7 +25,7 @@ class Uploader
 
         // create an album if not already exist in uploads dir
         // wouldn't make more sence if this part is done if there are no errors and right before the upload ??
-        $this->config['upload_path'] = $this->config['upload_path'] . $album ;
+        $this->config['upload_path'] = $this->config['root_path'] . $album ;
         if (!is_dir($this->config['upload_path']))
         {
             mkdir($this->config['upload_path'], 0755, true);
@@ -51,12 +52,10 @@ class Uploader
                 }
             }
         }
-        chmod($this->config['upload_path'],755);
-        $this->resetConfig();
         return true;
     }
     function setDir($dir = false) {
-        $this->config['upload_path'] = $this->config['upload_path'] . $dir . '/' ;
+        $this->config['upload_path'] = $this->config['root_path'] . $dir . '/' ;
         if (is_dir($this->config['upload_path'])) {
             return true;
         }
@@ -89,11 +88,9 @@ class Uploader
                     }
                 }
                 closedir($handle);
-                $this->resetConfig();
                 return ($arrFile);
             }
         }
-        $this->resetConfig();
         return false;
     }
     function refactor_dir($album, $currentFiles = null) {
@@ -107,6 +104,7 @@ class Uploader
                             rmdir($this->config['upload_path']);
                         }
                         if (is_file($fullFile) && !in_array($fullFile,$currentFiles)){
+                            chmod($fullFile,755);
                             unlink($fullFile);
                         }
                     }
@@ -114,11 +112,7 @@ class Uploader
                 closedir($handle);
             }
         }
-        $this->resetConfig();
         return true;
-    }
-    private function resetConfig(){
-        $this->config['upload_path'] = "./application/upload/"  ;
     }
 
 }
