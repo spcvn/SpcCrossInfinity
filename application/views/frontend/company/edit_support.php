@@ -578,7 +578,7 @@ $active_flg = isset($data['active_flag']) ? $data['active_flag'] : 0;
 
         $("input[name='companyfile[]']").on('change',function(){
             var file = $(this).val();
-            var exts = ['pdf','png','jpg','jpeg','txt'];
+            var exts = ['pdf','png','jpg','jpeg','txt','gif'];
             var image_holder = $(this).next();
             // first check if file field has any value
             if ( file ) {
