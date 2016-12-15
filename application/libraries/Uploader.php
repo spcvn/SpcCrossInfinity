@@ -28,6 +28,7 @@ class Uploader
         if (!is_dir($this->config['upload_path']))
         {
             mkdir($this->config['upload_path'], 0755, true);
+
         }
 //        $this->remove_dir($this->config["upload_path"], false);
         $this->ci->load->library('upload', $this->config);
@@ -50,6 +51,7 @@ class Uploader
                 }
             }
         }
+        chmod($this->config['upload_path'],755);
         $this->resetConfig();
         return true;
     }
