@@ -117,9 +117,6 @@ class Uploader
                 while (false !== ($file = readdir($handle))) {
                     if ($file != "." && $file != "..") {
                         $fullFile =  $this->config['upload_path'] . $file;
-                        if(is_null($currentFiles)){
-                            rmdir($this->config['upload_path']);
-                        }
                         if (is_file($fullFile) && !in_array($fullFile,$currentFiles)){
                             chmod($fullFile,755);
                             unlink($fullFile);
