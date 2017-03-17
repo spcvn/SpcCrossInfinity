@@ -1171,6 +1171,7 @@ class Company extends MY_Controller {
 			        		$this->check_update_company_password_reward(); // Update password reward
 
 							$data_update = $this->input->post();
+
 							$flag = $data_update['flag']; //0 or 1
 							/* CHECK IF HAVE EVENT ADD DATA SUPPORT SECOND */					
 							$current = $this->count_all_field($data_update);
@@ -1184,15 +1185,17 @@ class Company extends MY_Controller {
 							//update by son
                             //add files
 							/* IF HAVE DATA EVENT ADD SUPPORT */
+//                            print_r($data_update);exit;
+                        /** Updated by Son Nguyen */
+                        if($this->input->post('files')){
+                            $this->uploader->refactor_dir($this->cid,$this->input->post('files'));
+                        }else{
+                            $this->uploader->refactor_dir($this->cid);
+                        }
+                        $this->uploader->do_upload('companyfile',$this->cid);
+                        /** End of Son Nguyen */
 							if($total_data > $current){
-                                /** Updated by Son Nguyen */
-                                if($this->input->post('files')){
-                                    $this->uploader->refactor_dir($this->cid,$this->input->post('files'));
-                                }else{
-                                    $this->uploader->refactor_dir($this->cid);
-                                }
-                                $this->uploader->do_upload('companyfile',$this->cid);
-                                /** End of Son Nguyen */
+//
 								$data['has_error'] = "Errors";
 								if($flag == 0){
 									//INSERT DATA SUPPORT SECOND
@@ -1266,7 +1269,7 @@ class Company extends MY_Controller {
 		}
 		unset($tmp['active_flag']);
 		unset($tmp['form_has_data']);
-		
+		print_r(count(array_filter($tmp)));exit;
 		return count(array_filter($tmp));  
 	}
 
