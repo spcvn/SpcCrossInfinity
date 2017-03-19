@@ -1269,7 +1269,7 @@ class Company extends MY_Controller {
 		}
 		unset($tmp['active_flag']);
 		unset($tmp['form_has_data']);
-		print_r(count(array_filter($tmp)));exit;
+		// print_r(count(array_filter($tmp)));exit;
 		return count(array_filter($tmp));  
 	}
 
