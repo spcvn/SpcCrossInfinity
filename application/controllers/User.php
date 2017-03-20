@@ -17,6 +17,9 @@ class User extends MY_Controller
         $this->load->library("app/uploader");
         /** End of Son Nguyen */
 		$this->salt = $this->config->item('salt_password');
+
+		/*  Add lib by Unotrung */
+		$this->load->library('ciqrcode');
 	}
 	/*
 	QUI ƯỚC CHUNG
@@ -749,5 +752,12 @@ class User extends MY_Controller
 			}
 		}
 		return true;
+	}
+
+	public function generate_qrcode(){
+//		$this->load->library('ciqrcode');
+		header("Content-Type: image/png");
+		$params['data'] = 'This is a text to encode become QR Code';
+		$this->ciqrcode->generate($params);
 	}
 }

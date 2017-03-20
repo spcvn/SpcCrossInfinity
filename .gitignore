@@ -3,5 +3,6 @@
 /.idea/*
 /idea/*
 *.editorconfig
-/application/config/database.php
 application/upload/
+/application/config/database.php
+/application/config/config.php
