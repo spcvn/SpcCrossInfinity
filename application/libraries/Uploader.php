@@ -19,6 +19,7 @@ class Uploader
             'overwrite'       => FALSE,
             'max_size'        => "0",
             'encrypt_name'        => FALSE,
+            'download_path'     => "./download/index/",
         );
     }
     public function do_upload($field = 'userfile',$album = ''){
@@ -100,6 +101,7 @@ class Uploader
                                 $t['logo'] = 'txt.png';
                             }
                             $t['title'] = str_replace('_', ' ', ucfirst($f));
+                            $t['download'] = $this->config['download_path'] .$album .'/' . $file;
                             array_push($arrFile, $t);
                     }
                     }

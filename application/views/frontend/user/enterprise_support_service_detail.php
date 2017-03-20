@@ -124,9 +124,10 @@
 						 <td>ファイル</td>
 						 <td>
 							 <?php
-							 if($data_file){
+							 if($data_file){//cross.local/download/index/44/baidoc
+							 	// echo "<pre>"; print_r($data_file); exit();
 							 	foreach ($data_file as $file){  ?>
-									 <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+									 <a target="_blank" href="<?php echo base_url().$file['download']; ?>">
 										 <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
 									 </a>
 							 <?php }} ?>
