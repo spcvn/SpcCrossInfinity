@@ -20,10 +20,10 @@ class Download extends MY_Controller
 		$this->load->library('ciqrcode');
 	}
 
-	public function index()
+	public function index($cid,$filename)
 	{
 		//$name,$cid
-		$this->generate_pdf('baidoc','44');
+		$this->generate_pdf($filename,$cid);
 	}
 	
 	public function generate_qrcode($url = null){
@@ -54,7 +54,7 @@ class Download extends MY_Controller
 		$watermark->setAsOverlay();
 
 		//Specify the path to the existing pdf, the path to the new pdf file, and the watermark object
-		$watermarker = new PDFWatermarker(APPPATH.'upload/'.$cid.'/'.$filename.'.pdf',APPPATH.'upload/'.$cid.'/'.$filename.'-qrcode.pdf',$watermark); 
+		$watermarker = new PDFWatermarker(APPPATH.'upload/'.$cid.'/'.$filename,APPPATH.'upload/'.$cid.'/'.'qrcode-'.$filename,$watermark); 
 
 		//Set page range. Use 1-based index.
 		$watermarker->setPageRange(1,5);
@@ -62,7 +62,7 @@ class Download extends MY_Controller
 		//Save the new PDF to its specified location
 		$watermarker->savePdf();
 
-		$href = base_url().'application/upload/'.$cid.'/'.$filename.'-qrcode.pdf';
+		$href = base_url().'application/upload/'.$cid.'/'.'qrcode-'.$filename;
 		header("Location:$href");
 
 	}
