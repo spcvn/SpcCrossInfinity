@@ -25,7 +25,11 @@
 						<?php
 							$class_error_introduce_uid = !empty(form_error('introduce_uid')) ? "error" : "";
 						?>
-						<input type="text" name="introduce_uid" value="<?php echo !empty(set_value('introduce_uid')) ? set_value('introduce_uid') : "JPU000000000" ; ?>" placeholder="" maxlength="12" class="<?=$class_error_introduce_uid; ?>" onfocus="hidePHPMessageByName('introduce_uid')">
+						<!-- <input type="text" name="introduce_uid" value="<?php echo !empty(set_value('introduce_uid')) ? set_value('introduce_uid') : "JPU000000000" ; ?>" placeholder="" maxlength="12" class="<?=$class_error_introduce_uid; ?>" onfocus="hidePHPMessageByName('introduce_uid')"> -->
+
+						<!-- Unotrung modifine  -->
+						<input type="text" name="introduce_uid" value="<?php echo !empty($introduce_uid) ? $introduce_uid : "JPU000000000" ; ?>" placeholder="" maxlength="12" class="<?=$class_error_introduce_uid; ?>" onfocus="hidePHPMessageByName('introduce_uid')">
+
 						<span style="color:red" class="error-introduce_uid"><?php echo form_error('introduce_uid'); ?></span>
 						<div id="introduce_uid"></div>
 						</td>

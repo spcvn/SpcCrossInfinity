@@ -32,6 +32,9 @@ class Download extends MY_Controller
 		$params['level'] = 'H';
 		$params['size'] = 5;
 		$filename = 'qrcode-'.time().'.png';
+		if (!file_exists(APPPATH.'upload/qrcode/')) {
+		    mkdir(APPPATH.'upload/qrcode/', 0777, true);
+		}
 		$params['savename'] = APPPATH.'upload/qrcode/'.$filename;
 		$this->ciqrcode->generate($params);
 		
@@ -54,7 +57,9 @@ class Download extends MY_Controller
 		$watermark->setAsOverlay();
 
 		//Specify the path to the existing pdf, the path to the new pdf file, and the watermark object
-		// print_r(APPPATH.'upload/'.$cid.'/tmp/'.'qrcode-'.$filename);exit();
+		if (!file_exists(APPPATH.'upload/'.$cid.'/tmp/')) {
+		    mkdir(APPPATH.'upload/'.$cid.'/tmp/', 0777, true);
+		}
 		$watermarker = new PDFWatermarker(APPPATH.'upload/'.$cid.'/'.$filename,APPPATH.'upload/'.$cid.'/tmp/'.'qrcode-'.$filename,$watermark); 
 
 		//Set page range. Use 1-based index.

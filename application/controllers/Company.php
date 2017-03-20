@@ -1401,10 +1401,12 @@ class Company extends MY_Controller {
 	 * Display regist support service screen (UC-05)
 	 **/
 	public function show_regist_support_service() {
+		$uid_name = $this->uri->segment(3);
 		$this->is_company_login();
 		if(check_support($this->session->userdata['id']) == 1){
 			$data_regist['scripts'] = array('footerFixed.js', 'regist_support_service.js');
 			$this->layout->setLayout('frontend/layout/layout');
+			$data_regist['introduce_uid'] = $uid_name;
 			if($this->input->post()) {
 				$data_regist['introduce_uid'] = $this->input->post('introduce_uid');
 				$data_regist['buy_price'] = $this->input->post('buy_price');
