@@ -13,6 +13,7 @@ class Home extends MY_Controller {
 		$this->verify_auth();
 
 		$session_data = $this->session->all_userdata();
+
 		if($session_data['type'] == 'user'){
 			redirect('user');
 		}else{

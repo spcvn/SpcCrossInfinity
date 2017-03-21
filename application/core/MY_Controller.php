@@ -19,6 +19,11 @@ class MY_Controller extends CI_Controller{
 	protected function verify_auth($redirect_url = 'login')
 	{
         if (!$this->is_logged_in()) {
+        	/** Updated by Edward <ducnguyen1504@gmail.com> */
+        	if($_SERVER['REQUEST_METHOD']=="GET"){
+        		$_SESSION['http_referer']=$_SERVER['REDIRECT_URL'];
+			}
+        	/** End Edward */
             redirect($redirect_url);
         }
 	}
@@ -34,7 +39,7 @@ class MY_Controller extends CI_Controller{
         }
     }
 
-    protected function is_company_login(){
+    protected function is_company_login() {
         $this->verify_auth();
         $session_data = $this->session->all_userdata();
 
@@ -44,8 +49,7 @@ class MY_Controller extends CI_Controller{
             redirect('login');
         }
     }
-
-
+	
     /*
        Session user login
       'id' => $id,
