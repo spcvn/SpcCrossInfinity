@@ -24,7 +24,6 @@ class PDFWatermark {
 	 * @return void
 	 */
 	function __construct($file) {
-
 		$this->_file = $this->_prepareImage($file);
 		$this->_getImageSize( $this->_file );
 		

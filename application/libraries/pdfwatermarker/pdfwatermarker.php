@@ -212,7 +212,7 @@ class PDFWatermarker {
 	 */
 	public function savePdf() {
 		$this->_updatePDF();
-		$this->_tempPdf->Output("F",$this->_newPdf);
+		$this->_tempPdf->Output("I",$this->_newPdf);
 	}
 }
 ?>
