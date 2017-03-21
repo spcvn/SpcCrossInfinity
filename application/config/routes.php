@@ -16,6 +16,11 @@ $route['company/support'] = 'company/update_support';
 $route['company/support-empty'] = 'company/update_support_empty';
 $route['company'] = 'company/show_detail';
 $route['company/regist-purchase'] = 'company/show_regist_support_service';
+/*
+* Update router regist-purchase/param/
+* By Unotrung - 21-03-2017
+*/
+$route['company/regist-purchase(/[a-zA-Z0-9]+)'] = 'company/show_regist_support_service';
 $route['company/confirm-purchase'] = 'company/show_confirm_regist_support_service';
 $route['company/success-purchase'] = 'company/show_complete_regist_support_service';
 //$route['company/billing-history-by-day'] = 'company/billing_history_by_day';
