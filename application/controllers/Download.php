@@ -146,6 +146,7 @@ class Download extends MY_Controller
         $config['wm_opacity'] = 100;
         $config['wm_vrt_alignment'] = 'bottom';
         $config['wm_hor_alignment'] = 'right';
+        //show direct image
         $config['dynamic_output'] = TRUE;
         $this->image_lib->initialize($config);
         $this->image_lib->watermark();
