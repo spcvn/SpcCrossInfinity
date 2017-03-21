@@ -22,7 +22,7 @@ class Account extends MY_Controller {
 		$data['styles'] = array('login.css');
 		$data['scripts'] = array('login.js');
 		$this->layout->setLayout('frontend/layout/layout');
-
+		
 		// Count number of user, company
 		$data['count_users'] = $this->account->get_count_users();
 		$data['count_companies'] = $this->account->get_count_companies();
@@ -52,7 +52,15 @@ class Account extends MY_Controller {
 					// Make session and cookie
 					$this->account->create_session_cookie($id, $type, $is_remember);
 					$this->session->set_flashdata('success', 'Welcome');
-	                redirect('/');
+					/** Edited by Edward <ducnguyen1504@gmail.com> */
+					if(isset($_SESSION['http_referer'])) {
+						$redirect=$_SESSION['http_referer'];
+						unset($_SESSION['http_referer']);
+						redirect($redirect);
+					} else {
+						redirect('/');
+					}
+					/** End Edward */
 					
 				} else {
 					$this->session->set_flashdata('error', 'IDまたはPASSが間違っています。');
