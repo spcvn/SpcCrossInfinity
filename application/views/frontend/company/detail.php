@@ -164,7 +164,7 @@
 						 <?php
 						 if($data_file){
 						 	foreach ($data_file as $file){ ?>
-                                <a target="_blank" href="<?php echo base_url().$file['file']; ?>">
+                                <a target="_blank" href="<?php echo base_url().$file['download']; ?>">
                                     <img class="companyFilesLogo" src="<?php echo base_url(); ?>assets/frontend/images/<?php echo $file['logo']?>" title="<?php echo $file['title']?>">
                                 </a>
 						<?php }} ?>
