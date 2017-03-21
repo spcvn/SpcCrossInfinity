@@ -21,7 +21,7 @@ class MY_Controller extends CI_Controller{
         if (!$this->is_logged_in()) {
         	/** Updated by Edward <ducnguyen1504@gmail.com> */
         	if($_SERVER['REQUEST_METHOD']=="GET"){
-        		$_SESSION['http_referer']=$_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].$_SERVER['REDIRECT_URL'];
+        		$_SESSION['http_referer']=$_SERVER['REDIRECT_URL'];
 			}
         	/** End Edward */
             redirect($redirect_url);
